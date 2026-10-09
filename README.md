@@ -10,11 +10,11 @@ Each button copies the site to your GitHub and publishes it. Then replace every 
 
 A one-page template for an interior design or architecture studio that sells fixed-price services, in a single `index.html`. The demo studio, Goldleaf, its prices, address and reviews are fictional.
 
-- **Grid.** Thin lines divide the page into three columns between two side margins. Every block sits on the same lines.
+- **Grid.** Thin lines divide the page into three columns between two side margins, on a warm linen background. Every block sits on exactly the same lines, measured at several screen widths.
 - **Header.** The wordmark, the menu, a round "call us" badge that turns slowly, the phone number and messenger links.
-- **Hero.** Spaced lines "Design / architecture / decorating" and the wordmark, whose bar is the "l" of both words. A bouncing arrow sits beside a drawn plant and two open blue doors that show a photo of a hallway. The doors and plant are SVG line art you can recolour.
-- **Running line.** A black band with "Design project – $99" moving slowly across.
-- **Service cards.** Nine cards in pink, cream, blue and white, each with a serif title, a short text or list, and a large pill button.
+- **Hero.** Spaced lines "Interiors / architecture / styling", an italic serif wordmark with a leaf, and a bouncing arrow. Beside them, a terracotta arch opens onto a hallway photo, with a drawn armchair, a vase and a floor lamp. The scene is SVG you can recolour.
+- **Running line.** A dark band with your key offers moving slowly across.
+- **Service cards.** Nine cards in clay, sand, sage and white, each with a Fraunces serif title, a short text or list, and a large pill button.
 - **Client reviews from Formgong.** A rating block and a review card that changes every 6 seconds, with dots to pick one. A "Leave a review" button opens a form with 1–5 stars, a name and the review text. Once you approve reviews in Formgong (Dashboard → Reviews), they replace the sample reviews, together with the real average and count.
 - **Footer.** A dark footer with the address, contacts and messenger icons. On phones, a sticky bar keeps "Write to us" at hand.
 
@@ -36,12 +36,12 @@ Every button ("Sample", "Learn more", "Start drawing", the call badge and "Write
 
 **Edit**
 
-- Colours are at the top of the styles: `--bg` for the page, `--pink`, `--sky` and `--white` for the cards, `--door` for the doors, and `--blue` for the wordmark.
+- Colours are at the top of the styles: `--bg` for the page, `--clay`, `--sand`, `--sage` and `--white` for the cards, `--arch` and `--arch-in` for the arch, and `--accent` for the wordmark, stars and focus rings.
 - The side margins are `--m`. The three middle columns share the rest of the width.
 - To change the running line, edit the text of the two `[data-run]` paragraphs. The script repeats it.
 - Point the messenger links (Viber, Telegram, WhatsApp, Instagram) at your accounts.
 
-**Image.** The hallway photo was generated for this template with ChatGPT image generation (OpenAI) and saved as WebP (43 KB). The doors, plant and icons are drawn in SVG. You may use them in your own site.
+**Image.** The hallway photo was generated for this template with ChatGPT image generation (OpenAI) and saved as WebP (43 KB). The arch, furniture and icons are drawn in SVG. You may use them in your own site.
 
 ## Українська
 
@@ -51,7 +51,7 @@ Every button ("Sample", "Learn more", "Start drawing", the call badge and "Write
 
 - сітка з тонких ліній;
 - шапка з бейджем «call us», що обертається;
-- перший екран з логотипом, рослиною і блакитними дверима, намальованими в SVG, з фото коридору всередині;
+- перший екран з курсивним логотипом і теракотовою аркою, крізь яку видно фото коридору, поруч намальовані крісло й торшер;
 - чорна стрічка з текстом, що біжить;
 - дев'ять кольорових карток послуг із кнопками-«пігулками»;
 - відгуки з Formgong, що змінюються кожні 6 секунд: відвідувач залишає відгук із зірками, ви схвалюєте його в кабінеті, і він з'являється замість прикладів разом зі справжнім середнім балом;

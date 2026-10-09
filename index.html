@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Goldleaf: interior design, architecture and decorating</title>
 <meta name="description" content="Goldleaf is an interior design and architecture studio: design projects from $99, style and colour selection, house projects, 3D visualisation and a free online floor-plan tool. Write to us.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ffedbf'/%3E%3Crect x='14.5' y='4' width='3' height='24' fill='%235b7cbf'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f3eee5'/%3E%3Cpath d='M7 25C7 13 15 6 26 6c0 11-7 19-19 19z' fill='%23b4532a'/%3E%3Cpath d='M7 25 21 11' stroke='%23f3eee5' stroke-width='1.6'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Outfit:wght@500&family=Yeseva+One&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Open+Sans:wght@300;400;600;700&display=swap">
 <link rel="preload" as="image" href="img/hall.webp">
 <style>
 /* ---------- Colours and the grid ---------- */
 :root {
-  --bg: #ffedbf; --ink: #231f20; --ink-2: #151414; --blue: #5b7cbf; --door: #7f99cb; --door-in: #6f8bc0;
-  --pink: #f7dfd7; --sky: #d3e4ef; --white: #fff; --red: #e8452c;
+  --bg: #f3eee5; --ink: #2a2521; --ink-2: #1d1916; --accent: #b4532a; --arch: #c97a52; --arch-in: #e8b896;
+  --clay: #f0d8c8; --sage: #dde3cf; --sand: #e8ddc6; --white: #fff; --star: #b4532a;
   --m: clamp(16px, 8.7vw, 125px); /* side margin columns */
   --head: 80px;
 }
@@ -26,30 +26,28 @@ img, svg { display: block; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .skip { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 14px; color: #fff; background: var(--ink); }
 .skip:focus { top: 12px; }
-:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .frame { display: grid; grid-template-columns: var(--m) repeat(3, minmax(0, 1fr)) var(--m); }
 .frame > * { border-right: 1px solid var(--ink); }
 .frame > :last-child { border-right: 0; }
-h2, h3 { margin: 0; font-family: "Yeseva One", serif; font-weight: 400; color: var(--ink-2); }
+h2, h3 { margin: 0; font-family: "Fraunces", serif; font-weight: 600; font-optical-sizing: auto; color: var(--ink-2); }
 
-/* ---------- Wordmark: the bar is the "l" of both words ---------- */
-.mark { display: inline-grid; grid-template-columns: auto auto auto; grid-template-rows: auto auto; align-items: end; color: var(--blue); font-family: "Outfit", sans-serif; font-weight: 500; line-height: .82; letter-spacing: -.01em; text-decoration: none; }
-.mark .l { grid-column: 1; grid-row: 1; text-align: right; }
-.mark .bar { grid-column: 2; grid-row: 1 / 3; align-self: stretch; width: .085em; margin: -.06em .05em -.24em .07em; background: currentColor; }
-.mark .r1 { grid-column: 3; grid-row: 1; text-align: left; }
-.mark .r2 { grid-column: 3; grid-row: 2; padding-top: .08em; text-align: left; }
+/* ---------- Wordmark: "gold" over "leaf", with a leaf ---------- */
+.mark { display: inline-flex; flex-direction: column; align-items: flex-start; color: var(--accent); font-family: "Fraunces", serif; font-style: italic; font-weight: 500; line-height: .86; letter-spacing: -.02em; text-decoration: none; }
+.mark .w2 { display: inline-flex; align-items: flex-start; margin-left: .36em; }
+.mark .leaf { width: .4em; height: .4em; margin: .04em 0 0 .06em; }
 
 /* ---------- Header ---------- */
 header { position: sticky; top: 0; z-index: 50; height: var(--head); background: var(--bg); border-bottom: 1px solid var(--ink); }
 .hrow { display: grid; grid-template-columns: var(--m) 1fr auto var(--m); height: 100%; }
 .hrow > * { display: flex; align-items: center; }
 .hlogo { justify-content: center; border-right: 1px solid var(--ink); }
-.hlogo .mark { font-size: 26px; color: var(--ink); }
+.hlogo .mark { font-size: 25px; color: var(--ink); }
 .nav { gap: clamp(18px, 3.2vw, 46px); padding-left: 36px; }
 .nav a { position: relative; font-size: 16px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
 .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--ink); transform: scaleX(0); transition: transform .3s; }
 .nav a:hover::after, .nav a[aria-current=page]::after { transform: scaleX(1); }
-.hcall { gap: 14px; padding: 0 clamp(16px, 3.6vw, 52px) 0 10px; border-left: 1px solid var(--ink); }
+.hcall { gap: 14px; padding: 0 clamp(16px, 3.6vw, 52px) 0 10px; border-left: 1px solid var(--ink); border-right: 1px solid var(--ink); }
 .badge { position: relative; display: grid; place-items: center; width: 64px; height: 64px; padding: 0; background: none; border: 0; cursor: pointer; }
 .badge .ring { position: absolute; inset: 0; width: 100%; height: 100%; animation: rotate 10s linear infinite; }
 .badge .ring text { font: 600 9.2px "Open Sans", sans-serif; letter-spacing: 1.6px; fill: var(--ink); }
@@ -60,28 +58,31 @@ header { position: sticky; top: 0; z-index: 50; height: var(--head); background:
 .msg { display: grid; place-items: center; width: 34px; height: 34px; color: var(--bg); background: var(--ink); border-radius: 50%; transition: transform .2s; }
 .msg:hover { transform: scale(1.08); }
 .msg svg { width: 18px; height: 18px; }
-.lang { justify-content: center; font-size: 16px; font-weight: 700; border-left: 1px solid var(--ink); }
+.lang { justify-content: center; font-size: 16px; font-weight: 700; }
 .burger { display: none; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; z-index: 3; height: 565px; }
 .hero .brand { display: flex; flex-direction: column; align-items: center; padding-top: 72px; text-align: center; }
 .spaced { margin: 0 0 14px; font-size: 17px; letter-spacing: .48em; line-height: 1.42; }
-.hero .mark { font-size: clamp(64px, 8.4vw, 120px); }
+.hero .mark { font-size: clamp(64px, 8vw, 116px); }
 .arrow { margin-top: 32px; animation: jump 3s linear infinite; }
 .arrow svg { width: 28px; height: 58px; }
 @keyframes jump { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(10px); } }
-.hero .art { position: relative; grid-column: 3 / 5; border-right: 0; }
-.hero .art::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 1px; background: var(--ink); }
-.hero .art svg { position: absolute; left: 8%; bottom: -22px; width: 84%; height: auto; overflow: visible; }
+.hero .art { position: relative; grid-column: 3 / 5; }
+.hero .art::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(50% - .5px); width: 1px; background: var(--ink); } /* half of the padding box (art has a 1px right border) */
+.hero .art svg { position: absolute; left: 7%; bottom: 0; width: 86%; height: auto; overflow: visible; }
 .js .hero .art svg { animation: fade .8s .2s ease both; }
 @keyframes fade { from { opacity: 0; } }
-.door .leaf, .door .top { fill: var(--door); stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
-.door .pn { fill: var(--door); stroke: var(--ink); stroke-width: 1.4; }
-.door .pi { fill: var(--door-in); stroke: var(--ink); stroke-width: 1.1; }
-.door .photo-edge { fill: none; stroke: var(--ink); stroke-width: 1.4; }
-.plant path, .plant rect, .plant line { fill: var(--bg); stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
-.plant .stem { fill: none; }
+.scene .frame, .scene .key { fill: var(--arch); stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
+.scene .mould { fill: none; stroke: var(--arch-in); stroke-width: 2; }
+.scene .edge { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+.scene .chair .soft { fill: var(--sage); stroke: var(--ink); stroke-width: 1.5; }
+.scene .chair .line, .scene .lamp .line { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; }
+.scene .lamp .shade { fill: var(--sand); stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; }
+.scene .lamp .base { fill: var(--ink); }
+.scene .vase { fill: var(--clay); stroke: var(--ink); stroke-width: 1.4; }
+.scene .twig { fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-linecap: round; }
 
 /* ---------- Running line ---------- */
 .run { position: relative; z-index: 2; overflow: hidden; height: 50px; color: #fff; background: var(--ink); }
@@ -93,11 +94,11 @@ header { position: sticky; top: 0; z-index: 50; height: var(--head); background:
 /* ---------- Service cards ---------- */
 .cards > .card { display: flex; flex-direction: column; align-items: flex-start; min-height: 460px; padding: 56px 32px 52px; border-bottom: 1px solid var(--ink); }
 .cards > .gap { border-bottom: 1px solid var(--ink); }
-.cards .pink { background: var(--pink); }
-.cards .cream { background: var(--bg); }
-.cards .sky { background: var(--sky); }
+.cards .clay { background: var(--clay); }
+.cards .sand { background: var(--sand); }
+.cards .sage { background: var(--sage); }
 .cards .white { background: var(--white); }
-.card h2 { margin-bottom: 16px; font-size: 28px; line-height: 32px; letter-spacing: 1px; }
+.card h2 { margin-bottom: 16px; font-size: 28px; line-height: 32px; letter-spacing: .2px; }
 .card p { margin: 0; font-size: 16px; line-height: 26px; letter-spacing: .4px; }
 .card ul { margin: 0; padding: 0; list-style: none; font-size: 14px; line-height: 22px; letter-spacing: .3px; }
 .card .pill { margin-top: auto; }
@@ -108,10 +109,10 @@ header { position: sticky; top: 0; z-index: 50; height: var(--head); background:
 /* ---------- Reviews ---------- */
 .reviews > * { min-height: 360px; border-bottom: 1px solid var(--ink); }
 .rv-head { padding: 56px 32px; }
-.rv-head h2 { margin-bottom: 26px; font-size: 34px; line-height: 39px; letter-spacing: 1.68px; }
+.rv-head h2 { margin-bottom: 26px; font-size: 34px; line-height: 39px; letter-spacing: .3px; }
 .score { margin: 0 0 6px; font-size: 20px; font-weight: 700; }
-.score b { color: var(--red); font-size: 26px; }
-.stars { display: flex; gap: 6px; margin-bottom: 10px; color: var(--red); }
+.score b { color: var(--star); font-size: 26px; }
+.stars { display: flex; gap: 6px; margin-bottom: 10px; color: var(--star); }
 .stars svg { width: 18px; height: 18px; }
 .rv-head a { font-size: 15px; text-decoration: underline; text-underline-offset: 3px; }
 .rv-slider { grid-column: 3 / 5; display: grid; align-content: center; justify-items: center; gap: 18px; padding: 30px 40px; }
@@ -140,13 +141,13 @@ footer .msg { color: var(--ink); background: #fff; width: 38px; height: 38px; }
 dialog { width: min(560px, calc(100vw - 32px)); padding: 0; background: var(--bg); border: 2px solid var(--ink); border-radius: 30px; }
 dialog::backdrop { background: rgba(35, 31, 32, .55); }
 .dlg { position: relative; padding: 44px 40px 34px; }
-.dlg h2 { margin-bottom: 6px; font-size: 32px; letter-spacing: 1.4px; }
+.dlg h2 { margin-bottom: 6px; font-size: 32px; letter-spacing: .3px; }
 .dlg .lead { margin: 0 0 22px; font-size: 15px; }
 .dlg .close { position: absolute; top: 14px; right: 18px; width: 40px; height: 40px; background: none; border: 0; font-size: 28px; line-height: 1; cursor: pointer; }
 .form { display: grid; gap: 12px; }
 .form input, .form textarea { width: 100%; padding: 14px 22px; color: var(--ink); background: #fff; border: 2px solid var(--ink); border-radius: 28px; font: 16px "Open Sans", sans-serif; outline: none; }
 .form textarea { min-height: 110px; border-radius: 24px; resize: vertical; }
-.form input:focus, .form textarea:focus { border-color: var(--blue); }
+.form input:focus, .form textarea:focus { border-color: var(--accent); }
 .form .pill { justify-self: start; height: 60px; color: #fff; background: var(--ink); font-weight: 400; }
 .form .pill:hover { color: var(--ink); background: transparent; }
 .form .pill[disabled] { opacity: .6; cursor: progress; }
@@ -156,7 +157,7 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
 .credit { margin: 0; font-size: 12px; color: #6b6466; }
 .credit a { color: var(--ink); border-bottom: 1px solid currentColor; text-decoration: none; }
 .thanks { display: none; padding: 20px 0 6px; }
-.thanks strong { display: block; margin-bottom: 6px; font: 400 26px "Yeseva One", serif; }
+.thanks strong { display: block; margin-bottom: 6px; font: 600 26px "Fraunces", serif; }
 .is-sent > :not(.thanks) { display: none !important; }
 .is-sent > .thanks { display: block; animation: rise .5s ease both; }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
@@ -168,9 +169,9 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
 .rate input { position: absolute; opacity: 0; pointer-events: none; }
 .rate label { color: rgba(35, 31, 32, .25); cursor: pointer; transition: color .15s, transform .15s; }
 .rate label svg { width: 34px; height: 34px; }
-.rate label:hover, .rate label:hover ~ label, .rate input:checked ~ label { color: var(--red); }
+.rate label:hover, .rate label:hover ~ label, .rate input:checked ~ label { color: var(--star); }
 .rate label:active { transform: scale(.92); }
-.rate input:focus-visible + label { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 6px; }
+.rate input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
 .live-note { margin: 0; font-size: 13px; color: #6b6466; }
 
 /* ---------- Phone: sticky bar ---------- */
@@ -191,7 +192,7 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
   .hlogo { padding: 0 16px; }
   .nav { display: none; }
   .lang { display: none; }
-  .hcall { border-left: 0; padding-right: 8px; }
+  .hcall { border-left: 0; border-right: 0; padding-right: 8px; }
   .badge { width: 52px; height: 52px; }
   .hphone { font-size: 18px; }
   .burger { display: grid; place-items: center; width: 44px; height: 44px; margin-right: 10px; padding: 0; background: none; border: 0; cursor: pointer; }
@@ -248,12 +249,13 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
   <symbol id="i-tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.5 3.6 2.9 10.8c-1 .4-1 1.5 0 1.8l4.6 1.4 1.8 5.6c.2.7 1.1.9 1.6.4l2.6-2.4 4.7 3.5c.7.5 1.6.1 1.8-.7l3-15.3c.2-1-.8-1.8-1.9-1.5zM9.3 14.3l8.6-6.9-6.9 8.3-.3 3.2z"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.8a11 11 0 0 1-4.4-3.9c-.3-.5-1-1.5-1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.2.5.1.6 0l.9-1c.2-.2.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></symbol>
   <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path fill="currentColor" d="M3 21C3 10 10 3 21 3c0 11-7 18-18 18z"/><path d="M3 21 15 9" stroke="#f3eee5" stroke-width="1.4"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></symbol>
 </svg>
 
 <header>
   <div class="hrow">
-    <div class="hlogo"><a class="mark" href="#top" aria-label="Goldleaf, home"><span class="l">go</span><span class="bar"></span><span class="r1">d</span><span class="r2">eaf</span></a></div>
+    <div class="hlogo"><a class="mark" href="#top" aria-label="Goldleaf, home"><span class="w1">gold</span><span class="w2">leaf<svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg></span></a></div>
     <nav class="nav" id="nav" aria-label="Main">
       <a href="#top" aria-current="page">Home</a><a href="#services" data-topic="Design project from $99">Offer $99</a><a href="#reviews">Our work</a><a href="#plan-online">Planning</a><a href="#services">Services</a>
     </nav>
@@ -274,79 +276,61 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
   <section class="hero frame" aria-label="Goldleaf studio">
     <div class="gap"></div>
     <div class="brand">
-      <p class="spaced">Design<br>architecture<br>decorating</p>
+      <p class="spaced">Interiors<br>architecture<br>styling</p>
       <h1 class="sr">Goldleaf: interior design, architecture and decorating</h1>
-      <span class="mark" aria-hidden="true"><span class="l">go</span><span class="bar"></span><span class="r1">d</span><span class="r2">eaf</span></span>
+      <span class="mark" aria-hidden="true"><span class="w1">gold</span><span class="w2">leaf<svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg></span></span>
       <a class="arrow" href="#services" aria-label="Scroll to the services"><svg viewBox="0 0 28 58" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 0v56M2 44l12 13 12-13"/></svg></a>
     </div>
     <div class="art">
-      <svg viewBox="0 0 700 510" role="img" aria-label="A drawn plant beside two open blue doors, showing a bright hallway">
-        <defs><clipPath id="doorway"><rect x="278" y="44" width="252" height="470"/></clipPath></defs>
-        <g class="plant">
-          <path class="stem" d="M84 430C82 360 70 300 52 250M88 430C92 350 108 280 118 186M92 430C100 380 128 330 168 300M86 430C80 400 66 380 40 362"/>
-          <path d="M118 186c-26-4-50-22-46-48 3-18 22-26 36-18 2-22 26-34 44-22 18 12 14 40-4 54-10 8-20 18-30 34z"/>
-          <path d="M108 168c4-10 10-18 18-24M132 172c-2-12 0-24 6-32" class="stem"/>
-          <path d="M52 250c-24 2-44-14-42-36 2-16 18-24 32-16 6-18 30-22 40-6 10 16 0 36-14 44-6 4-12 10-16 14z"/>
-          <path d="M40 232c6-8 14-12 22-14" class="stem"/>
-          <path d="M168 300c-18-12-22-36-6-50 12-10 28-6 32 6 14-10 34-2 34 16 0 18-18 28-36 28-8 0-16 0-24 0z"/>
-          <path d="M178 284c8-6 18-8 28-6" class="stem"/>
-          <path d="M40 362c-18 0-30-14-26-30 3-12 16-16 24-10 6-14 26-14 30 2 4 14-6 26-18 32z"/>
-          <rect x="34" y="420" width="104" height="18"/>
-          <path d="M42 438h88l-8 72H50z"/>
-        </g>
-        <g class="door">
-          <image href="img/hall.webp" x="278" y="44" width="252" height="470" preserveAspectRatio="xMidYMid slice" clip-path="url(#doorway)"/>
-          <rect class="photo-edge" x="278" y="44" width="252" height="470"/>
-          <rect class="top" x="250" y="20" width="308" height="24"/>
-          <polygon class="leaf" points="160,30 278,48 278,496 160,520"/>
-          <polygon class="pn" points="178.9,57.0 259.1,67.9 259.1,167.9 178.9,163.4"/>
-          <polygon class="pi" points="188.3,75.1 249.7,82.6 249.7,151.3 188.3,147.1"/>
-          <polygon class="pn" points="178.9,182.7 259.1,186.1 259.1,213.4 178.9,211.7"/>
-          <polygon class="pi" points="188.3,188.9 249.7,191.2 249.7,207.7 188.3,206.1"/>
-          <polygon class="pn" points="178.9,231.0 259.1,231.6 259.1,345.2 178.9,351.8"/>
-          <polygon class="pi" points="188.3,247.9 249.7,247.5 249.7,330.0 188.3,334.3"/>
-          <polygon class="pn" points="178.9,371.2 259.1,363.4 259.1,390.7 178.9,400.2"/>
-          <polygon class="pi" points="188.3,376.0 249.7,369.8 249.7,386.3 188.3,393.3"/>
-          <polygon class="pn" points="178.9,419.5 259.1,408.9 259.1,477.1 178.9,492.0"/>
-          <polygon class="pi" points="188.3,435.1 249.7,426.2 249.7,462.8 188.3,473.4"/>
-          <polygon class="leaf" points="648,30 530,48 530,496 648,520"/>
-          <polygon class="pn" points="629.1,57.0 548.9,67.9 548.9,167.9 629.1,163.4"/>
-          <polygon class="pi" points="619.7,75.1 558.3,82.6 558.3,151.3 619.7,147.1"/>
-          <polygon class="pn" points="629.1,182.7 548.9,186.1 548.9,213.4 629.1,211.7"/>
-          <polygon class="pi" points="619.7,188.9 558.3,191.2 558.3,207.7 619.7,206.1"/>
-          <polygon class="pn" points="629.1,231.0 548.9,231.6 548.9,345.2 629.1,351.8"/>
-          <polygon class="pi" points="619.7,247.9 558.3,247.5 558.3,330.0 619.7,334.3"/>
-          <polygon class="pn" points="629.1,371.2 548.9,363.4 548.9,390.7 629.1,400.2"/>
-          <polygon class="pi" points="619.7,376.0 558.3,369.8 558.3,386.3 619.7,393.3"/>
-          <polygon class="pn" points="629.1,419.5 548.9,408.9 548.9,477.1 629.1,492.0"/>
-          <polygon class="pi" points="619.7,435.1 558.3,426.2 558.3,462.8 619.7,473.4"/>
+      <svg viewBox="0 0 700 520" role="img" aria-label="A drawn armchair and floor lamp beside a tall arch that opens onto a bright hallway">
+        <defs><clipPath id="arch-open"><path d="M282 520V190a128 128 0 0 1 256 0V520z"/></clipPath></defs>
+        <g class="scene">
+          <image href="img/hall.webp" x="282" y="60" width="256" height="460" preserveAspectRatio="xMidYMid slice" clip-path="url(#arch-open)"/>
+          <path class="edge" d="M282 520V190a128 128 0 0 1 256 0V520"/>
+          <path class="frame" d="M262 520V190a148 148 0 0 1 296 0V520h-20V190a128 128 0 0 0-256 0V520z"/>
+          <path class="mould" d="M271 520V190a139 139 0 0 1 278 0V520"/>
+          <path class="key" d="M398 38h24l-4 26h-16z"/>
+          <path class="twig" d="M28 468c-2-40 4-74 20-104M30 430c-12-12-22-14-30-12M34 404c8-12 18-16 28-14M38 382c-6-14-6-26-2-36"/>
+          <path class="vase" d="M10 516c-6-22 0-40 14-48h8c14 8 20 26 14 48z"/>
+          <g class="chair" transform="translate(0 40)">
+            <path class="soft" d="M78 404V302c0-40 30-64 72-64s72 24 72 64v102z"/>
+            <rect class="soft" x="62" y="356" width="176" height="50" rx="20"/>
+            <rect class="soft" x="48" y="318" width="34" height="92" rx="17"/>
+            <rect class="soft" x="218" y="318" width="34" height="92" rx="17"/>
+            <path class="line" d="M80 410l-8 66M220 410l8 66M112 268c18-10 58-10 76 0"/>
+          </g>
+          <g class="lamp">
+            <path class="shade" d="M596 236h88l-20-64h-48z"/>
+            <path class="line" d="M640 236V510"/>
+            <ellipse class="base" cx="640" cy="512" rx="30" ry="6"/>
+          </g>
         </g>
       </svg>
     </div>
     <div class="gap"></div>
   </section>
 
-  <div class="run" aria-hidden="true"><div class="track"><p data-run>Design project – $99</p><p data-run>Design project – $99</p></div></div>
+  <div class="run" aria-hidden="true"><div class="track"><p data-run>Fixed-price design projects · Free first consultation · 3D renders in ten days</p><p data-run>Fixed-price design projects · Free first consultation · 3D renders in ten days</p></div></div>
 
   <section class="cards frame" id="services" aria-label="Services">
     <div class="gap"></div>
-    <article class="card pink"><h2>A sample design project, on offer</h2><p>The lowest price for a full interior design project.</p><button class="pill" type="button" data-write="Sample design project ($99 offer)">Sample</button></article>
-    <article class="card cream"><h2>Style, colours and textures for your interior</h2><ul><li>style</li><li>colour scheme</li><li>textures</li><li>decor</li></ul><button class="pill" type="button" data-write="Style, colours and textures">Learn more</button></article>
-    <article class="card sky"><h2>An architectural project for a private house</h2><p>Every drawing you need to price the build and put the house up.</p><button class="pill" type="button" data-write="Architectural project for a house">Sample</button></article>
+    <article class="card clay"><h2>A sample design project, on offer</h2><p>A complete interior design project at a fixed price, agreed before we start.</p><button class="pill" type="button" data-write="Sample design project ($99 offer)">Sample</button></article>
+    <article class="card sand"><h2>Style, colours and textures for your interior</h2><ul><li>style</li><li>colour scheme</li><li>textures</li><li>decor</li></ul><button class="pill" type="button" data-write="Style, colours and textures">Learn more</button></article>
+    <article class="card sage"><h2>An architectural project for a private house</h2><p>Every drawing you need to price the build and put the house up.</p><button class="pill" type="button" data-write="Architectural project for a house">Sample</button></article>
     <div class="gap"></div>
     <div class="gap"></div>
-    <article class="card cream"><h2>A 3D design project</h2><p>All the plans and drawings to start building and finishing: elevations of every wall, details of tricky joints and a 3D model.</p><button class="pill" type="button" data-write="3D design project">Sample</button></article>
-    <article class="card sky"><h2>3D interior visualisation</h2><ul><li>renders</li><li>360° walk-through</li></ul><button class="pill" type="button" data-write="3D visualisation">Sample</button></article>
+    <article class="card sand"><h2>A 3D design project</h2><p>All the plans and drawings to start building and finishing: elevations of every wall, details of tricky joints and a 3D model.</p><button class="pill" type="button" data-write="3D design project">Sample</button></article>
+    <article class="card sage"><h2>3D interior visualisation</h2><ul><li>renders</li><li>360° walk-through</li></ul><button class="pill" type="button" data-write="3D visualisation">Sample</button></article>
     <article class="card white" id="plan-online"><h2>Draw your floor plan online</h2><ul><li>no sign-up</li><li>free</li><li>works on your phone</li><li>for rooms with right angles</li></ul><button class="pill" type="button" data-write="Online floor plan tool">Start drawing</button></article>
     <div class="gap"></div>
     <div class="gap"></div>
-    <article class="card sky"><h2>A sample site master plan</h2><p>An overview of the plot, the layout scheme and the full set of drawings.</p><button class="pill" type="button" data-write="Site master plan">Sample</button></article>
-    <article class="card pink"><h2>How to measure your rooms yourself</h2><p>Measuring apartments, houses and shops for the design and the renovation, step by step.</p><button class="pill" type="button" data-write="Measuring guide">Learn more</button></article>
-    <article class="card cream"><h2>Frequently asked questions</h2><p>Answers to the questions we hear most often.</p><button class="pill" type="button" data-write="A question">Learn more</button></article>
+    <article class="card sage"><h2>A sample site master plan</h2><p>An overview of the plot, the layout scheme and the full set of drawings.</p><button class="pill" type="button" data-write="Site master plan">Sample</button></article>
+    <article class="card clay"><h2>How to measure your rooms yourself</h2><p>Measuring apartments, houses and shops for the design and the renovation, step by step.</p><button class="pill" type="button" data-write="Measuring guide">Learn more</button></article>
+    <article class="card sand"><h2>Frequently asked questions</h2><p>Answers to the questions we hear most often.</p><button class="pill" type="button" data-write="A question">Learn more</button></article>
     <div class="gap"></div>
   </section>
 
-  <div class="run" aria-hidden="true"><div class="track"><p data-run>Design project – $99</p><p data-run>Design project – $99</p></div></div>
+  <div class="run" aria-hidden="true"><div class="track"><p data-run>Fixed-price design projects · Free first consultation · 3D renders in ten days</p><p data-run>Fixed-price design projects · Free first consultation · 3D renders in ten days</p></div></div>
 
   <section class="reviews frame" id="reviews" aria-labelledby="reviews-title">
     <div class="gap"></div>
@@ -373,7 +357,7 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
 
 <footer>
   <div class="frame">
-    <div class="flogo"><span class="mark" aria-hidden="true"><span class="l">go</span><span class="bar"></span><span class="r1">d</span><span class="r2">eaf</span></span></div>
+    <div class="flogo"><span class="mark" aria-hidden="true"><span class="w1">gold</span><span class="w2">leaf<svg class="leaf" aria-hidden="true"><use href="#i-leaf"/></svg></span></span></div>
     <div><h3>Address</h3><p>21 Cooper Street, studio 2</p><p>Old town</p></div>
     <div><h3>Contacts</h3><p><a href="tel:+15550192740">+1 (555) 019 27 40</a></p><p><a href="mailto:hello@goldleaf.example">hello@goldleaf.example</a></p></div>
     <div><h3>Get in touch</h3><div class="msgs"><a class="msg" href="#" aria-label="Viber"><svg aria-hidden="true"><use href="#i-viber"/></svg></a><a class="msg" href="#" aria-label="Telegram"><svg aria-hidden="true"><use href="#i-tg"/></svg></a><a class="msg" href="#" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a><a class="msg" href="#" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-insta"/></svg></a></div></div>
