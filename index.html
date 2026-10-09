@@ -161,6 +161,18 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
 .is-sent > .thanks { display: block; animation: rise .5s ease both; }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
 
+/* ---------- Leave a review ---------- */
+.rv-head .pill { margin-top: 28px; width: auto; height: 56px; padding: 0 26px; border-width: 3px; font-size: 14px; }
+.rate { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 4px; margin: 0; padding: 0; border: 0; }
+.rate legend { float: left; width: 100%; margin: 0 0 6px; padding: 0; font-size: 15px; }
+.rate input { position: absolute; opacity: 0; pointer-events: none; }
+.rate label { color: rgba(35, 31, 32, .25); cursor: pointer; transition: color .15s, transform .15s; }
+.rate label svg { width: 34px; height: 34px; }
+.rate label:hover, .rate label:hover ~ label, .rate input:checked ~ label { color: var(--red); }
+.rate label:active { transform: scale(.92); }
+.rate input:focus-visible + label { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 6px; }
+.live-note { margin: 0; font-size: 13px; color: #6b6466; }
+
 /* ---------- Phone: sticky bar ---------- */
 .bar-m { display: none; }
 
@@ -340,19 +352,20 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
     <div class="gap"></div>
     <div class="rv-head">
       <h2 id="reviews-title">Client reviews</h2>
-      <p class="score">Rating: <b>5</b>/5</p>
+      <p class="score">Rating: <b data-avg>5</b>/5</p>
       <div class="stars" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
-      <a href="#reviews">Based on 100+ reviews</a>
+      <a href="#reviews" data-count>Based on 100+ reviews</a>
+      <button class="pill" type="button" data-review-open>Leave a review</button>
     </div>
     <div class="rv-slider">
-      <div class="quote" aria-live="polite">
+      <div class="quote" aria-live="polite" data-quotes>
         <figure class="q on"><p>Working with Goldleaf was a pleasure. Everything was professional, honest, clear and on time. Anna, our designer, did more than draw the project: she was a genuinely warm person to work with, and that matters when it is your future home. Thank you!</p><cite>Olivia Morris, Bristol</cite></figure>
         <figure class="q"><p>We had a narrow hallway and no idea what to do with it. The plan they drew fits two wardrobes, a bench and a mirror, and it still feels wide. The builders worked straight from the drawings.</p><cite>Daniel Reyes, Leeds</cite></figure>
         <figure class="q"><p>The $99 project was honestly more than I expected: proper drawings, a colour scheme and a list of materials with codes. I used it to get three quotes for the renovation.</p><cite>Hannah Clarke, Bath</cite></figure>
         <figure class="q"><p>They designed our small café in three weeks and came to the site twice a week while it was built. Customers ask who did the interior.</p><cite>Marco Bellini, York</cite></figure>
         <figure class="q"><p>I drew my apartment in their free online tool first, then ordered the full project. Being able to start on my own made the first call much easier.</p><cite>Sophie Turner, Oxford</cite></figure>
       </div>
-      <div class="dots" role="group" aria-label="Choose a review"><button type="button" aria-label="Review 1" aria-current="true"></button><button type="button" aria-label="Review 2"></button><button type="button" aria-label="Review 3"></button><button type="button" aria-label="Review 4"></button><button type="button" aria-label="Review 5"></button></div>
+      <div class="dots" role="group" aria-label="Choose a review" data-dots><button type="button" aria-label="Review 1" aria-current="true"></button><button type="button" aria-label="Review 2"></button><button type="button" aria-label="Review 3"></button><button type="button" aria-label="Review 4"></button><button type="button" aria-label="Review 5"></button></div>
     </div>
     <div class="gap"></div>
   </section>
@@ -393,6 +406,35 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
   </div>
 </dialog>
 
+<dialog id="review" aria-labelledby="review-title">
+  <div class="dlg">
+    <button class="close" type="button" aria-label="Close" data-close>×</button>
+    <h2 id="review-title">Leave a review</h2>
+    <p class="lead">Tell other clients how it went. Your review appears on the site once the studio approves it.</p>
+    <!-- Formgong review form. Use a form with "Reviews" switched on in your Formgong dashboard; its access key
+         also loads the approved reviews into the slider above. A submission with a rating from 1 to 5 becomes a review. -->
+    <form class="form" id="f-review" action="https://formgong.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="fk_your_access_key" data-reviews-key>
+      <input type="hidden" name="topic" value="Review">
+      <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="botcheck" tabindex="-1" autocomplete="off"></label></div>
+      <fieldset class="rate">
+        <legend>Your rating</legend>
+        <input type="radio" id="r5" name="rating" value="5" required><label for="r5" aria-label="5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+        <input type="radio" id="r4" name="rating" value="4"><label for="r4" aria-label="4 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+        <input type="radio" id="r3" name="rating" value="3"><label for="r3" aria-label="3 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+        <input type="radio" id="r2" name="rating" value="2"><label for="r2" aria-label="2 stars"><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+        <input type="radio" id="r1" name="rating" value="1"><label for="r1" aria-label="1 star"><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+      </fieldset>
+      <label><span class="sr">Name</span><input name="name" autocomplete="name" placeholder="Your name" required></label>
+      <label><span class="sr">Your review</span><textarea name="review" placeholder="What did we do well? What could be better?" required></textarea></label>
+      <button class="pill" type="submit">Send review</button>
+      <p class="status" data-status role="status" aria-live="polite"></p>
+      <p class="credit">Reviews powered by <a href="https://formgong.com" rel="noopener">Formgong</a></p>
+      <div class="thanks" tabindex="-1"><strong>Thank you, <span data-name>there</span>.</strong>Your review will appear here once the studio has read it.</div>
+    </form>
+  </div>
+</dialog>
+
 <script>
 (function () {
   var root = document.documentElement, still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -417,15 +459,55 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
     dlg.showModal();
   }
   document.querySelectorAll("[data-write]").forEach(function (b) { b.addEventListener("click", function () { openWrite(b.dataset.write); }); });
-  dlg.querySelector("[data-close]").addEventListener("click", function () { dlg.close(); });
-  dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+  var reviewDlg = document.getElementById("review"), reviewForm = document.getElementById("f-review");
+  document.querySelector("[data-review-open]").addEventListener("click", function () { reviewForm.classList.remove("is-sent"); reviewDlg.showModal(); });
+  document.querySelectorAll("dialog").forEach(function (d) {
+    d.querySelector("[data-close]").addEventListener("click", function () { d.close(); });
+    d.addEventListener("click", function (e) { if (e.target === d) d.close(); });
+  });
 
-  // Reviews: change every 6 seconds; the dots pick one.
-  var qs = document.querySelectorAll(".q"), dots = document.querySelectorAll(".dots button"), at = 0, timer;
-  function show(i) { at = (i + qs.length) % qs.length; qs.forEach(function (q, k) { q.classList.toggle("on", k === at); }); dots.forEach(function (d, k) { d.setAttribute("aria-current", String(k === at)); }); }
-  function play() { clearInterval(timer); if (!still) timer = setInterval(function () { show(at + 1); }, 6000); }
-  dots.forEach(function (d, k) { d.addEventListener("click", function () { show(k); play(); }); });
-  play();
+  // Reviews slider: changes every 6 seconds; the dots pick one. Works on whatever slides are in the box.
+  var box = document.querySelector("[data-quotes]"), dotsBox = document.querySelector("[data-dots]"), at = 0, timer;
+  function slides() { return box.querySelectorAll(".q"); }
+  function show(i) {
+    var qs = slides(); at = (i + qs.length) % qs.length;
+    qs.forEach(function (q, k) { q.classList.toggle("on", k === at); });
+    dotsBox.querySelectorAll("button").forEach(function (d, k) { d.setAttribute("aria-current", String(k === at)); });
+  }
+  function buildDots() {
+    dotsBox.textContent = "";
+    slides().forEach(function (q, k) {
+      var b = document.createElement("button");
+      b.type = "button"; b.setAttribute("aria-label", "Review " + (k + 1)); b.setAttribute("aria-current", String(k === 0));
+      b.addEventListener("click", function () { show(k); play(); });
+      dotsBox.appendChild(b);
+    });
+  }
+  function play() { clearInterval(timer); if (!still && slides().length > 1) timer = setInterval(function () { show(at + 1); }, 6000); }
+  buildDots(); play();
+
+  // Live reviews: once the review form's Formgong form has approved reviews, they replace the sample ones,
+  // with the real average and count. Until then (or with the placeholder key) the samples stay.
+  var key = document.querySelector("[data-reviews-key]").value;
+  if (/^fk_[A-Za-z0-9_]+$/.test(key) && key.indexOf("your_access") === -1 && window.fetch) {
+    fetch("https://formgong.com/reviews/" + key + ".json")
+      .then(function (res) { return res.ok ? res.json() : null; })
+      .then(function (data) {
+        if (!data || !data.count || !data.reviews || !data.reviews.length) return;
+        box.textContent = "";
+        data.reviews.forEach(function (r, k) {
+          var fig = document.createElement("figure"); fig.className = "q" + (k === 0 ? " on" : "");
+          var p = document.createElement("p"); p.textContent = r.body || "★".repeat(r.rating); p.setAttribute("dir", "auto");
+          var cite = document.createElement("cite"); cite.textContent = (r.author || "Client") + " · " + "★".repeat(r.rating);
+          fig.appendChild(p); fig.appendChild(cite); box.appendChild(fig);
+        });
+        document.querySelector("[data-avg]").textContent = data.average.toFixed(1).replace(/\.0$/, "");
+        document.querySelector("[data-count]").textContent = "Based on " + data.count + (data.count === 1 ? " review" : " reviews");
+        document.querySelector(".stars").setAttribute("aria-label", data.average + " out of 5 stars");
+        at = 0; buildDots(); play();
+      })
+      .catch(function () {});
+  }
 
   // Cards fade up as they scroll in.
   if (!still && "IntersectionObserver" in window) {
@@ -433,27 +515,29 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
     document.querySelectorAll(".card > *, .rv-head, .rv-slider").forEach(function (el) { el.classList.add("rv"); seen.observe(el); });
   }
 
-  // The form: thanks only when Formgong answers success: true.
-  var button = form.querySelector('button[type="submit"]'), status = form.querySelector("[data-status]"), label = button.textContent;
-  function say(text, bad) { status.textContent = text; status.classList.toggle("err", !!bad); }
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    button.disabled = true; button.textContent = "Sending…"; say("");
-    var first = (form.elements.namedItem("name").value || "").trim().split(/\s+/)[0];
-    fetch(form.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) })
-      .then(function (res) { return res.json().catch(function () { return null; }); })
-      .then(function (result) {
-        if (result && result.success === true) {
-          form.querySelectorAll("[data-name]").forEach(function (n) { n.textContent = first || "there"; });
-          var keep = topic.value; form.reset(); topic.value = keep;
-          form.classList.add("is-sent");
-          form.querySelector(".thanks").focus();
-        } else {
-          say((result && result.message) || "Could not send. Please try again.", true);
-        }
-      })
-      .catch(function () { say("Could not send. Check your connection and try again.", true); })
-      .then(function () { button.disabled = false; button.textContent = label; });
+  // Both forms: thanks only when Formgong answers success: true.
+  [form, reviewForm].forEach(function (f) {
+    var button = f.querySelector('button[type="submit"]'), status = f.querySelector("[data-status]"), label = button.textContent;
+    function say(text, bad) { status.textContent = text; status.classList.toggle("err", !!bad); }
+    f.addEventListener("submit", function (event) {
+      event.preventDefault();
+      button.disabled = true; button.textContent = "Sending…"; say("");
+      var first = (f.elements.namedItem("name").value || "").trim().split(/\s+/)[0];
+      fetch(f.action, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(f) })
+        .then(function (res) { return res.json().catch(function () { return null; }); })
+        .then(function (result) {
+          if (result && result.success === true) {
+            f.querySelectorAll("[data-name]").forEach(function (n) { n.textContent = first || "there"; });
+            var keepTopic = f.querySelector('[name="topic"]').value; f.reset(); f.querySelector('[name="topic"]').value = keepTopic;
+            f.classList.add("is-sent");
+            f.querySelector(".thanks").focus();
+          } else {
+            say((result && result.message) || "Could not send. Please try again.", true);
+          }
+        })
+        .catch(function () { say("Could not send. Check your connection and try again.", true); })
+        .then(function () { button.disabled = false; button.textContent = label; });
+    });
   });
 })();
 </script>
