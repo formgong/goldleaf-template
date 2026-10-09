@@ -13,8 +13,8 @@
 <style>
 /* ---------- Colours and the grid ---------- */
 :root {
-  --bg: #f3eee5; --ink: #2a2521; --ink-2: #1d1916; --accent: #b4532a; --arch: #c97a52; --arch-in: #e8b896;
-  --clay: #f0d8c8; --sage: #dde3cf; --sand: #e8ddc6; --white: #fff; --star: #b4532a;
+  --bg: #fffaf1; --ink: #231d1a; --ink-2: #1a1512; --accent: #ff4a24; --arch: #ff5a36; --arch-in: #ffb23e;
+  --coral: #ff7f5c; --sun: #ffcf3f; --mint: #5fd6a8; --sky: #7cc4ff; --star: #ff4a24;
   --m: clamp(16px, 8.7vw, 125px); /* side margin columns */
   --head: 80px;
 }
@@ -39,22 +39,22 @@ h2, h3 { margin: 0; font-family: "Fraunces", serif; font-weight: 600; font-optic
 
 /* ---------- Header ---------- */
 header { position: sticky; top: 0; z-index: 50; height: var(--head); background: var(--bg); border-bottom: 1px solid var(--ink); }
-.hrow { display: grid; grid-template-columns: var(--m) 1fr auto var(--m); height: 100%; }
+.hrow { display: grid; grid-template-columns: var(--m) repeat(3, minmax(0, 1fr)) var(--m); height: 100%; } /* the same five columns as .frame */
 .hrow > * { display: flex; align-items: center; }
 .hlogo { justify-content: center; border-right: 1px solid var(--ink); }
 .hlogo .mark { font-size: 25px; color: var(--ink); }
-.nav { gap: clamp(18px, 3.2vw, 46px); padding-left: 36px; }
+.nav { grid-column: 2 / 4; min-width: 0; gap: clamp(18px, 3.2vw, 46px); padding-left: 36px; border-right: 1px solid var(--ink); }
 .nav a { position: relative; font-size: 16px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase; text-decoration: none; white-space: nowrap; }
 .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--ink); transform: scaleX(0); transition: transform .3s; }
 .nav a:hover::after, .nav a[aria-current=page]::after { transform: scaleX(1); }
-.hcall { gap: 14px; padding: 0 clamp(16px, 3.6vw, 52px) 0 10px; border-left: 1px solid var(--ink); border-right: 1px solid var(--ink); }
+.hcall { grid-column: 4; min-width: 0; justify-content: center; gap: 12px; padding: 0 12px; border-right: 1px solid var(--ink); }
 .badge { position: relative; display: grid; place-items: center; width: 64px; height: 64px; padding: 0; background: none; border: 0; cursor: pointer; }
 .badge .ring { position: absolute; inset: 0; width: 100%; height: 100%; animation: rotate 10s linear infinite; }
 .badge .ring text { font: 600 9.2px "Open Sans", sans-serif; letter-spacing: 1.6px; fill: var(--ink); }
 .badge .ph { width: 22px; height: 22px; }
 @keyframes rotate { to { transform: rotate(360deg); } }
 .hphone { font-size: 21px; font-weight: 700; text-decoration: none; white-space: nowrap; }
-.msgs { display: flex; gap: 10px; margin-left: 18px; }
+.msgs { display: flex; gap: 10px; margin-left: 6px; }
 .msg { display: grid; place-items: center; width: 34px; height: 34px; color: var(--bg); background: var(--ink); border-radius: 50%; transition: transform .2s; }
 .msg:hover { transform: scale(1.08); }
 .msg svg { width: 18px; height: 18px; }
@@ -77,15 +77,15 @@ header { position: sticky; top: 0; z-index: 50; height: var(--head); background:
 .scene .frame, .scene .key { fill: var(--arch); stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
 .scene .mould { fill: none; stroke: var(--arch-in); stroke-width: 2; }
 .scene .edge { fill: none; stroke: var(--ink); stroke-width: 1.4; }
-.scene .chair .soft { fill: var(--sage); stroke: var(--ink); stroke-width: 1.5; }
+.scene .chair .soft { fill: var(--mint); stroke: var(--ink); stroke-width: 1.5; }
 .scene .chair .line, .scene .lamp .line { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; }
-.scene .lamp .shade { fill: var(--sand); stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; }
+.scene .lamp .shade { fill: var(--sun); stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; }
 .scene .lamp .base { fill: var(--ink); }
-.scene .vase { fill: var(--clay); stroke: var(--ink); stroke-width: 1.4; }
+.scene .vase { fill: var(--coral); stroke: var(--ink); stroke-width: 1.4; }
 .scene .twig { fill: none; stroke: var(--ink); stroke-width: 1.2; stroke-linecap: round; }
 
 /* ---------- Running line ---------- */
-.run { position: relative; z-index: 2; overflow: hidden; height: 50px; color: #fff; background: var(--ink); }
+.run { position: relative; z-index: 2; overflow: hidden; height: 50px; color: var(--sun); background: var(--ink); }
 .run .track { display: flex; width: max-content; height: 100%; align-items: center; animation: run 240s linear infinite; }
 .run p { margin: 0; padding-right: 22px; font-size: 16px; text-transform: uppercase; white-space: nowrap; word-spacing: 2px; }
 .run p span { margin-right: 22px; }
@@ -94,10 +94,10 @@ header { position: sticky; top: 0; z-index: 50; height: var(--head); background:
 /* ---------- Service cards ---------- */
 .cards > .card { display: flex; flex-direction: column; align-items: flex-start; min-height: 460px; padding: 56px 32px 52px; border-bottom: 1px solid var(--ink); }
 .cards > .gap { border-bottom: 1px solid var(--ink); }
-.cards .clay { background: var(--clay); }
-.cards .sand { background: var(--sand); }
-.cards .sage { background: var(--sage); }
-.cards .white { background: var(--white); }
+.cards .coral { background: var(--coral); }
+.cards .sun { background: var(--sun); }
+.cards .mint { background: var(--mint); }
+.cards .sky { background: var(--sky); }
 .card h2 { margin-bottom: 16px; font-size: 28px; line-height: 32px; letter-spacing: .2px; }
 .card p { margin: 0; font-size: 16px; line-height: 26px; letter-spacing: .4px; }
 .card ul { margin: 0; padding: 0; list-style: none; font-size: 14px; line-height: 22px; letter-spacing: .3px; }
@@ -181,8 +181,14 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
 .js .rv { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .9s cubic-bezier(.2, .7, .2, 1); }
 .js .rv.in { opacity: 1; transform: none; }
 
-@media (max-width: 1320px) {
+@media (max-width: 1540px) {
   .hcall .msgs { display: none; }
+}
+@media (max-width: 1120px) {
+  .badge { width: 52px; height: 52px; }
+  .hphone { font-size: 17px; }
+}
+@media (max-width: 1320px) {
   .nav { gap: 22px; padding-left: 26px; }
   .nav a { font-size: 14px; }
 }
@@ -192,7 +198,8 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
   .hlogo { padding: 0 16px; }
   .nav { display: none; }
   .lang { display: none; }
-  .hcall { border-left: 0; border-right: 0; padding-right: 8px; }
+  .nav, .hcall { grid-column: auto; border-right: 0; }
+  .hcall { justify-content: flex-end; padding: 0 8px 0 0; }
   .badge { width: 52px; height: 52px; }
   .hphone { font-size: 18px; }
   .burger { display: grid; place-items: center; width: 44px; height: 44px; margin-right: 10px; padding: 0; background: none; border: 0; cursor: pointer; }
@@ -314,19 +321,19 @@ dialog::backdrop { background: rgba(35, 31, 32, .55); }
 
   <section class="cards frame" id="services" aria-label="Services">
     <div class="gap"></div>
-    <article class="card clay"><h2>A sample design project, on offer</h2><p>A complete interior design project at a fixed price, agreed before we start.</p><button class="pill" type="button" data-write="Sample design project ($99 offer)">Sample</button></article>
-    <article class="card sand"><h2>Style, colours and textures for your interior</h2><ul><li>style</li><li>colour scheme</li><li>textures</li><li>decor</li></ul><button class="pill" type="button" data-write="Style, colours and textures">Learn more</button></article>
-    <article class="card sage"><h2>An architectural project for a private house</h2><p>Every drawing you need to price the build and put the house up.</p><button class="pill" type="button" data-write="Architectural project for a house">Sample</button></article>
+    <article class="card coral"><h2>A sample design project, on offer</h2><p>A complete interior design project at a fixed price, agreed before we start.</p><button class="pill" type="button" data-write="Sample design project ($99 offer)">Sample</button></article>
+    <article class="card sun"><h2>Style, colours and textures for your interior</h2><ul><li>style</li><li>colour scheme</li><li>textures</li><li>decor</li></ul><button class="pill" type="button" data-write="Style, colours and textures">Learn more</button></article>
+    <article class="card mint"><h2>An architectural project for a private house</h2><p>Every drawing you need to price the build and put the house up.</p><button class="pill" type="button" data-write="Architectural project for a house">Sample</button></article>
     <div class="gap"></div>
     <div class="gap"></div>
-    <article class="card sand"><h2>A 3D design project</h2><p>All the plans and drawings to start building and finishing: elevations of every wall, details of tricky joints and a 3D model.</p><button class="pill" type="button" data-write="3D design project">Sample</button></article>
-    <article class="card sage"><h2>3D interior visualisation</h2><ul><li>renders</li><li>360° walk-through</li></ul><button class="pill" type="button" data-write="3D visualisation">Sample</button></article>
-    <article class="card white" id="plan-online"><h2>Draw your floor plan online</h2><ul><li>no sign-up</li><li>free</li><li>works on your phone</li><li>for rooms with right angles</li></ul><button class="pill" type="button" data-write="Online floor plan tool">Start drawing</button></article>
+    <article class="card sun"><h2>A 3D design project</h2><p>All the plans and drawings to start building and finishing: elevations of every wall, details of tricky joints and a 3D model.</p><button class="pill" type="button" data-write="3D design project">Sample</button></article>
+    <article class="card mint"><h2>3D interior visualisation</h2><ul><li>renders</li><li>360° walk-through</li></ul><button class="pill" type="button" data-write="3D visualisation">Sample</button></article>
+    <article class="card sky" id="plan-online"><h2>Draw your floor plan online</h2><ul><li>no sign-up</li><li>free</li><li>works on your phone</li><li>for rooms with right angles</li></ul><button class="pill" type="button" data-write="Online floor plan tool">Start drawing</button></article>
     <div class="gap"></div>
     <div class="gap"></div>
-    <article class="card sage"><h2>A sample site master plan</h2><p>An overview of the plot, the layout scheme and the full set of drawings.</p><button class="pill" type="button" data-write="Site master plan">Sample</button></article>
-    <article class="card clay"><h2>How to measure your rooms yourself</h2><p>Measuring apartments, houses and shops for the design and the renovation, step by step.</p><button class="pill" type="button" data-write="Measuring guide">Learn more</button></article>
-    <article class="card sand"><h2>Frequently asked questions</h2><p>Answers to the questions we hear most often.</p><button class="pill" type="button" data-write="A question">Learn more</button></article>
+    <article class="card mint"><h2>A sample site master plan</h2><p>An overview of the plot, the layout scheme and the full set of drawings.</p><button class="pill" type="button" data-write="Site master plan">Sample</button></article>
+    <article class="card coral"><h2>How to measure your rooms yourself</h2><p>Measuring apartments, houses and shops for the design and the renovation, step by step.</p><button class="pill" type="button" data-write="Measuring guide">Learn more</button></article>
+    <article class="card sun"><h2>Frequently asked questions</h2><p>Answers to the questions we hear most often.</p><button class="pill" type="button" data-write="A question">Learn more</button></article>
     <div class="gap"></div>
   </section>
 

@@ -10,11 +10,11 @@ Each button copies the site to your GitHub and publishes it. Then replace every 
 
 A one-page template for an interior design or architecture studio that sells fixed-price services, in a single `index.html`. The demo studio, Goldleaf, its prices, address and reviews are fictional.
 
-- **Grid.** Thin lines divide the page into three columns between two side margins, on a warm linen background. Every block sits on exactly the same lines, measured at several screen widths.
-- **Header.** The wordmark, the menu, a round "call us" badge that turns slowly, the phone number and messenger links.
-- **Hero.** Spaced lines "Interiors / architecture / styling", an italic serif wordmark with a leaf, and a bouncing arrow. Beside them, a terracotta arch opens onto a hallway photo, with a drawn armchair, a vase and a floor lamp. The scene is SVG you can recolour.
-- **Running line.** A dark band with your key offers moving slowly across.
-- **Service cards.** Nine cards in clay, sand, sage and white, each with a Fraunces serif title, a short text or list, and a large pill button.
+- **Grid.** Thin lines divide the page into three columns between two side margins, on a warm white background. Every block, the header included, sits on exactly the same lines, measured at twelve screen widths from 901 to 1920 px.
+- **Header.** The wordmark, the menu, and in its own column a round "call us" badge that turns slowly and the phone number. Messenger links join them on screens 1541 px and wider.
+- **Hero.** Spaced lines "Interiors / architecture / styling", an italic serif wordmark with a leaf, and a bouncing arrow. Beside them, a bright red-orange arch opens onto a hallway photo, with a mint armchair, a coral vase and a yellow floor lamp. The scene is SVG you can recolour.
+- **Running line.** A dark band with your key offers in yellow, moving slowly across.
+- **Service cards.** Nine cards in coral, sunflower yellow, mint and sky blue, each with a Fraunces serif title, a short text or list, and a large pill button.
 - **Client reviews from Formgong.** A rating block and a review card that changes every 6 seconds, with dots to pick one. A "Leave a review" button opens a form with 1–5 stars, a name and the review text. Once you approve reviews in Formgong (Dashboard → Reviews), they replace the sample reviews, together with the real average and count.
 - **Footer.** A dark footer with the address, contacts and messenger icons. On phones, a sticky bar keeps "Write to us" at hand.
 
@@ -36,7 +36,7 @@ Every button ("Sample", "Learn more", "Start drawing", the call badge and "Write
 
 **Edit**
 
-- Colours are at the top of the styles: `--bg` for the page, `--clay`, `--sand`, `--sage` and `--white` for the cards, `--arch` and `--arch-in` for the arch, and `--accent` for the wordmark, stars and focus rings.
+- Colours are at the top of the styles: `--bg` for the page, `--coral`, `--sun`, `--mint` and `--sky` for the cards and the drawn furniture, `--arch` and `--arch-in` for the arch, and `--accent` for the wordmark, stars and focus rings.
 - The side margins are `--m`. The three middle columns share the rest of the width.
 - To change the running line, edit the text of the two `[data-run]` paragraphs. The script repeats it.
 - Point the messenger links (Viber, Telegram, WhatsApp, Instagram) at your accounts.
@@ -49,11 +49,11 @@ Every button ("Sample", "Learn more", "Start drawing", the call badge and "Write
 
 На сторінці:
 
-- сітка з тонких ліній;
+- сітка з тонких ліній, на яких стоїть кожен блок, і шапка теж;
 - шапка з бейджем «call us», що обертається;
-- перший екран з курсивним логотипом і теракотовою аркою, крізь яку видно фото коридору, поруч намальовані крісло й торшер;
+- перший екран з курсивним логотипом і яскравою червоно-помаранчевою аркою, крізь яку видно фото коридору, поруч м'ятне крісло й жовтий торшер;
 - чорна стрічка з текстом, що біжить;
-- дев'ять кольорових карток послуг із кнопками-«пігулками»;
+- дев'ять яскравих карток послуг (корал, жовтий, м'ятний, блакитний) із кнопками-«пігулками»;
 - відгуки з Formgong, що змінюються кожні 6 секунд: відвідувач залишає відгук із зірками, ви схвалюєте його в кабінеті, і він з'являється замість прикладів разом зі справжнім середнім балом;
 - темний футер.
 
