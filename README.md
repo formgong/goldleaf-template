@@ -7,6 +7,7 @@
 Each button copies the site to your GitHub and publishes it. Then replace every `fk_your_access_key` in `index.html` of your copy with your Formgong access key (free at https://formgong.com/new) and commit: the host republishes on its own.
 
 Сайт студії дизайну й архітектури з формою Формгонг
+Сайт студії дизайну й архітектури з формою Формгонг
 
 A one-page template for an interior design or architecture studio that sells fixed-price services, in a single `index.html`. The demo studio, Goldleaf, its prices, address and reviews are fictional.
 
@@ -15,7 +16,7 @@ A one-page template for an interior design or architecture studio that sells fix
 - **Hero.** Spaced lines "Design / architecture / decorating" and the wordmark, whose bar is the "l" of both words. A bouncing arrow sits beside a drawn plant and two open blue doors that show a photo of a hallway. The doors and plant are SVG line art you can recolour.
 - **Running line.** A black band with "Design project – $99" moving slowly across.
 - **Service cards.** Nine cards in pink, cream, blue and white, each with a serif title, a short text or list, and a large pill button.
-- **Client reviews from Formgong.** A rating block and a review card that changes every 6 seconds, with dots to pick one. A "Leave a review" button opens a form with 1–5 stars, a name and the review text. Once you approve reviews in your Formgong dashboard, they replace the sample reviews, together with the real average and count.
+- **Client reviews from Formgong.** A rating block and a review card that changes every 6 seconds, with dots to pick one. A "Leave a review" button opens a form with 1–5 stars, a name and the review text. Once you approve reviews in Formgong (Dashboard → Reviews), they replace the sample reviews, together with the real average and count.
 - **Footer.** A dark footer with the address, contacts and messenger icons. On phones, a sticky bar keeps "Write to us" at hand.
 
 Every button ("Sample", "Learn more", "Start drawing", the call badge and "Write to us") opens one "Write to us" window. It fills the topic in for the visitor and sends it as a hidden `topic` field.
@@ -30,7 +31,7 @@ Every button ("Sample", "Learn more", "Start drawing", the call badge and "Write
 
 **Reviews**
 
-1. In the Formgong dashboard, switch on "Reviews" for a form. It can be the same form as the one above, or a separate one.
+1. In the Formgong dashboard, open Reviews (https://formgong.com/dashboard/reviews) and turn reviews on for a form. It can be the same form as the one above, or a separate one. You approve or hide each review there.
 2. Put that form's access key in the review form (`<form id="f-review">`). If you use one form for everything, it is already there after find and replace.
 3. A submission with a `rating` from 1 to 5 becomes a pending review. When you approve it, the slider loads it from `https://formgong.com/reviews/<your key>.json` and shows the real average and count. Until then the five sample reviews stay, so replace or delete them before you launch.
 
