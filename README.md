@@ -7,7 +7,6 @@
 Each button copies the site to your GitHub and publishes it. Then replace every `fk_your_access_key` in `index.html` of your copy with your Formgong access key (free at https://formgong.com/new) and commit: the host republishes on its own.
 
 Сайт студії дизайну й архітектури з формою Формгонг
-Сайт студії дизайну й архітектури з формою Формгонг
 
 A one-page template for an interior design or architecture studio that sells fixed-price services, in a single `index.html`. The demo studio, Goldleaf, its prices, address and reviews are fictional.
 
